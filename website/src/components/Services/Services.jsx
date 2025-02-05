@@ -48,7 +48,7 @@ const Services = () => {
 
   return (
     <motion.div
-      className="min-h-screen bg-black text-white"
+      className="min-h-screen  mt-16 bg-black text-white"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 1 }}
@@ -87,7 +87,7 @@ const Services = () => {
       </motion.div>
 
       {/* Services Section */}
-      <div className="flex flex-wrap justify-center gap-8 w-full max-w-6xl mx-auto py-16">
+      <div className="flex flex-wrap justify-center  gap-8 w-full max-w-6xl mx-auto py-16">
         {services.map((service) => (
           <motion.div
             key={service.id}

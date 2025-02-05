@@ -76,7 +76,7 @@ const Contact = () => {
   };
 
   return (
-    <div className="contact_us_6 font-nunito bg-gray-900 text-[#d8dedd]">
+    <div className="contact_us_6  mt-12 font-nunito bg-gray-900 text-[#d8dedd]">
       <div className="max-w-7xl mx-auto px-4 py-12">
         <form className="form-box" onSubmit={handleSubmit}>
           <div className="container-block">
