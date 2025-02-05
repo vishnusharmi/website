@@ -6,6 +6,7 @@ const Contact = () => {
     height: "400px",
   });
 
+  // usestate
   const [center] = useState({
     lat: 17.451771,
     lng: 78.393103,
