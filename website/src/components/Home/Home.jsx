@@ -1,132 +1,56 @@
-import React, { useState, useEffect } from "react";
-import Card from "./Card";
-import { motion } from "framer-motion";
-import Navbar from "../Navbar/Navbar";
-import Footer from "../Footer/Footer";
+import React from "react";
+import Hero from "./Hero";
 
-const banners = [
-  "Innovating for a better future",
-  "Delivering excellence in every project",
-  "Your trusted partner in technology",
-];
 
-const services = [
-  {
-    title: "Web Development",
-    description:
-      "Building responsive and dynamic websites tailored to your needs.",
-  },
-  {
-    title: "AI Solutions",
-    description:
-      "Leveraging AI to enhance business operations with smart automation.",
-  },
-  {
-    title: "Cloud Computing",
-    description:
-      "Providing secure, scalable cloud solutions to support your growth.",
-  },
-  {
-    title: "Cybersecurity",
-    description:
-      "Protecting your data and infrastructure with cutting-edge security measures.",
-  },
-];
 
-const projects = [
-  {
-    title: "Smart AI Assistant",
-    description:
-      "An intelligent assistant powered by AI to streamline daily tasks.",
-  },
-  {
-    title: "E-Commerce Platform",
-    description:
-      "A robust e-commerce solution designed for seamless user experiences.",
-  },
-  {
-    title: "Cloud Management System",
-    description: "A cloud-based platform for managing resources efficiently.",
-  },
-  {
-    title: "Mobile Health App",
-    description:
-      "An app that monitors health metrics and offers personalized health advice.",
-  },
-  {
-    title: "Blockchain-based Voting System",
-    description:
-      "A secure voting platform powered by blockchain technology to ensure transparency and integrity.",
-  },
-  {
-    title: "AI-Powered Chatbot",
-    description:
-      "A chatbot leveraging AI to provide customer support and automate repetitive tasks.",
-  },
-  {
-    title: "Smart Home Automation",
-    description:
-      "An IoT solution that enables remote control and automation of home devices for convenience and energy efficiency.",
-  },
-];
 
-export default function Home() {
-  const [bannerIndex, setBannerIndex] = useState(0);
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setBannerIndex((prevIndex) => (prevIndex + 1) % banners.length);
-    }, 3000);
-    return () => clearInterval(interval);
-  }, []);
-
+const DataScienceBanner = () => {
   return (
+
     <div>
-      <div className="bg-gray-900  min-h-screen p-10 text-white">
-        {/* Dynamic Banner */}
-        <motion.h1
-          key={bannerIndex}
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: 20 }}
-          transition={{ duration: 0.5 }}
-          className="text-4xl font-extrabold text-center mb-12  shadow-lg"
-        >
-          {banners[bannerIndex]}
-        </motion.h1>
+    <div className="relative p-4 mb-5  py-32 flex flex-col items-start justify-center text-white bg-cover bg-center px-32">
+      {/* Background Image with Blur */}
+      <div
+        className="absolute inset-0 bg-cover bg-center blur-lg"
+        style={{
+          backgroundImage:
+            "url('https://media.istockphoto.com/id/1390650720/photo/digital-network-connection-abstract-connection-of-dots-and-lines-technology-background-plexus.jpg?s=612x612&w=0&k=20&c=mX3Pe2x4I6ZQp5S6m9kOPo6CIiUB7lB82nD8T0vnEAI=')",
+          filter: "blur(2px)", // Extra blur for browsers without Tailwind support
+        }}
+      ></div>
 
-        {/* Services Section */}
-        <h2 className="text-3xl font-semibold text-center mb-8 ">
-          Our Services
-        </h2>
-        <div
-          className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8"
-          style={{ animationIterationCount: "1" }}
-        >
-          {services.map((service, index) => (
-            <Card
-              key={index}
-              className="p-8 text-center shadow-2xl rounded-lg transition-transform transform hover:scale-105"
-              Info={service}
-            />
-          ))}
-        </div>
+      {/* Overlay for readability */}
+      <div className="absolute inset-0  bg-opacity-60"></div>
 
-        {/* Key Projects Section */}
-        <h2 className="text-3xl font-semibold text-center mt-12 mb-8 ">
-          Key Projects
-        </h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4">
-          {projects.map((project, index) => (
-            <Card
-              key={index}
-              className="p-8  text-center shadow-2xl rounded-lg transition-transform transform hover:scale-105 hover:bg-[#6c5ce7]"
-              Info={project}
-            />
-          ))}
-        </div>
-        <Footer />
+      {/* Content */}
+      <div className="relative text-left max-w-2xl">
+        <h1 className="  md:text-6xl font-bold">
+          Your Data Science Technology Partner 
+        </h1>
+        <p className="text-xl  text-gray-300 mt-4">
+          Delivering real-world intelligence
+        </p>
+        <button className="mt-6 px-6 py-3 border text-xl border-green-500 text-green-400 rounded-md hover:bg-green-500 hover:text-white transition">
+          Request Free AI Consultation
+        </button>
       </div>
+
+      {/* Certifications Section - Adjusted Alignment */}
+      <div className="relative mt-8 text-left max-w-2xl bg-gray-800 bg-opacity-50 p-4 rounded-md">
+        <h2 className="text-2xl font-semibold text-green-400 mb-2">
+          Industry Standards & Security Compliance
+        </h2>
+        <ul className="list-disc pl-5 text-md text-gray-300">
+          <li>ISO/IEC 12207: Software Life Cycle Processes</li>
+          <li>OWASP Security Guidelines</li>
+          <li>Agile Development Principles</li>
+        </ul>
+      </div>
+
+    </div>
+    <Hero/>
     </div>
   );
-}
+};
+
+export default DataScienceBanner;

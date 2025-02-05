@@ -1,13 +1,34 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom"; 
 
 function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-
   const [isOpen, setIsOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 50) {
+        setIsScrolled(true);
+      } else {
+        setIsScrolled(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
+  const handlePageClick = () => {
+    setIsMenuOpen(false);
+    setIsOpen(false);
+  };
 
   return (
     <>
-      <nav className="bg-gray-800 ">
+      <nav className={`fixed top-0 left-0 right-0 z-50 transition-colors duration-300 bg-gray-900 `}>
         <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
           <div className="relative flex h-16 items-center justify-between">
             <div className="absolute inset-y-0 left-0 flex items-center sm:hidden">
@@ -55,51 +76,59 @@ function Navbar() {
             </div>
             <div className="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
               <div className="flex shrink-0 items-center">
-                <img
-                  className="h-8 w-auto"
-                  src="https://tailwindui.com/plus/img/logos/mark.svg?color=indigo&shade=500"
-                  alt="Logo"
-                />
+                <Link to="/" onClick={handlePageClick}>
+                  <img
+                    className="h-8 w-auto"
+                    src="https://tailwindui.com/plus/img/logos/mark.svg?color=indigo&shade=500"
+                    alt="Logo"
+                  />
+                </Link>
               </div>
               <div className="hidden sm:ml-6 sm:block">
                 <div className="flex space-x-4">
-                  <a
-                    href="/"
+                  <Link
+                    to="/"
                     className="rounded-md px-3 py-2 text-sm font-medium text-gray-100 hover:bg-gray-700 hover:text-white"
+                    onClick={handlePageClick}
                   >
                     Home
-                  </a>
-                  <a
-                    href="/about"
+                  </Link>
+                  <Link
+                    to="/about"
                     className="rounded-md px-3 py-2 text-sm font-medium text-gray-100 hover:bg-gray-700 hover:text-white"
+                    onClick={handlePageClick}
                   >
                     About Us
-                  </a>
-                  <a
-                    href="/services"
+                  </Link>
+                  <Link
+                    to="/services"
                     className="rounded-md px-3 py-2 text-sm font-medium text-gray-100 hover:bg-gray-700 hover:text-white"
+                    onClick={handlePageClick}
                   >
                     Services
-                  </a>
-                  <a
-                    href="/projects"
-                    className="rounded-md bg-gray-800 px-3 py-2 text-sm text-gray-100 font-medium text-white"
+                  </Link>
+                  <Link
+                    to="/projects"
+                    className="rounded-md  px-3 py-2 text-sm text-gray-100 font-medium text-white"
                     aria-current="page"
+                    onClick={handlePageClick}
                   >
                     Projects
-                  </a>
-                  <a
-                    href="/locations"
+                  </Link>
+                  <Link
+                    to="/locations"
                     className="rounded-md px-3 py-2 text-sm font-medium text-gray-100 hover:bg-gray-700 hover:text-white"
+                    onClick={handlePageClick}
                   >
                     Locations
-                  </a>
-                  <a
-                    href="/contact"
+                  </Link>
+                  <Link
+                    to="/contact"
                     className="rounded-md px-3 py-2 text-sm font-medium text-gray-100 hover:bg-gray-700 hover:text-white"
+                    onClick={handlePageClick}
                   >
                     Contact us
-                  </a>
+                  </Link>
                 </div>
               </div>
             </div>
@@ -142,19 +171,19 @@ function Navbar() {
 
                 {isOpen && (
                   <div
-                    className="absolute right-0 z-10 mt-2 w-48 origin-top-right  rounded-md bg-gray-900 py-1 shadow-lg ring-1 ring-black/5 focus:outline-none"
+                    className="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-gray-900 py-1 shadow-lg ring-1 ring-black/5 focus:outline-none"
                     role="menu"
                     aria-orientation="vertical"
                   >
-                    <a href="#" className="block px-4 py-2 text-sm text-white">
+                    <Link to="/profile" className="block px-4 py-2 text-sm text-white">
                       Your Profile
-                    </a>
-                    <a href="#" className="block px-4 py-2 text-sm text-white">
+                    </Link>
+                    <Link to="/settings" className="block px-4 py-2 text-sm text-white">
                       Settings
-                    </a>
-                    <a href="#" className="block px-4 py-2 text-sm text-white">
+                    </Link>
+                    <Link to="/logout" className="block px-4 py-2 text-sm text-white">
                       Sign out
-                    </a>
+                    </Link>
                   </div>
                 )}
               </div>
@@ -166,43 +195,45 @@ function Navbar() {
         {isMenuOpen && (
           <div className="sm:hidden" id="mobile-menu">
             <div className="space-y-1 px-2 pt-2 pb-3">
-              <a
-                href="#"
+              <Link
+                to="/"
                 className="block rounded-md bg-gray-900 px-3 py-2 text-base font-medium text-white"
                 aria-current="page"
+                onClick={handlePageClick}
               >
                 Homepage
-              </a>
-              <a
-                href="#"
+              </Link>
+              <Link
+                to="/about"
                 className="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white"
+                onClick={handlePageClick}
               >
                 About us
-              </a>
-              <a
-                href="#"
-                className="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white"
+              </Link>
+              <Link
+                to="/services"
+                className="block rounded-md px-3 py-2 text-base font-medium  text-gray-300 hover:bg-gray-700 hover:text-white"
               >
                 Services
-              </a>
-              <a
-                href="#"
+              </Link>
+              <Link
+                to="/projects"
                 className="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white"
               >
                 Projects
-              </a>
-              <a
-                href="#"
+              </Link>
+              <Link
+                to="/locations"
                 className="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white"
               >
                 Locations
-              </a>
-              <a
-                href="#"
+              </Link>
+              <Link
+                to="/contact"
                 className="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white"
               >
                 Contact
-              </a>
+              </Link>
             </div>
           </div>
         )}

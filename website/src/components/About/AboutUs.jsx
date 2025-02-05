@@ -24,7 +24,7 @@ const cardVariants = {
 
 const AboutUs = () => {
   return (
-    <div className="bg-black text-white  ">
+    <div className="bg-black mt-9 text-white  ">
       <div className="container mx-auto px-6 py-12  ">
         {/* Title */}
         <motion.h1

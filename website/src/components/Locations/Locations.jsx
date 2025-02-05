@@ -2,10 +2,10 @@ import React from "react";
 
 function Locations() {
   return (
-    <div className="bg-gray-900 text-white">
+    <div className="bg-gray-900 mt-16 text-white">
       <div className="max-w-screen-lg mx-auto px-4">
         <div className="">
-          <p className="text-2xl font-semibold text-center mb-6 text-white">
+          <p className="text-2xl font-semibold text-center mb-6 pt-4 text-white">
             Our Location in the US
           </p>
           <div className="w-full h-[400px] md:h-[500px] flex justify-center rounded-lg shadow-lg overflow-hidden">

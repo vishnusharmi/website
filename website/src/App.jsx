@@ -1,6 +1,5 @@
 import "./App.css";
-import React from "react";
-
+import React, { useState } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import AboutUs from "./components/About/AboutUs";
 import Services from "./components/Services/Services";
@@ -10,30 +9,28 @@ import Home from "./components/Home/Home";
 import Projects from "./components/Projects/Projects";
 import Navbar from "./components/Navbar/Navbar";
 import Footer from "./components/Footer/Footer";
+import Loader from "./components/Loader/Loader";
+
 function App() {
+  const [loading, setLoading] = useState(true);
+
   return (
     <>
-      <BrowserRouter>
-        <div style={{ marginBottom: "0px" }}>
-          {" "}
+      {loading && <Loader setLoading={setLoading} />}
+      {!loading && (
+        <BrowserRouter>
           <Navbar />
-        </div>
-        <div style={{ marginTop: "0px" }}>
-          {" "}
           <Routes>
-            <Route path="/about" element={<AboutUs />}></Route>
-            <Route path="/services" element={<Services />}></Route>
-            <Route path="/contact" element={<Contact />}></Route>
-            <Route path="/locations" element={<Locations />}></Route>
-            <Route path="/" element={<Home />}></Route>
-            <Route path="/projects" element={<Projects />}></Route>
+            <Route path="/about" element={<AboutUs />} />
+            <Route path="/services" element={<Services />} />
+            <Route path="/contact" element={<Contact />} />
+            <Route path="/locations" element={<Locations />} />
+            <Route path="/" element={<Home />} />
+            <Route path="/projects" element={<Projects />} />
           </Routes>
-        </div>
-        <div>
-          {" "}
           <Footer />
-        </div>
-      </BrowserRouter>
+        </BrowserRouter>
+      )}
     </>
   );
 }

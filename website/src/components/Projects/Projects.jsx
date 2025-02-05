@@ -100,7 +100,7 @@ export default function Projects() {
   );
 
   return (
-    <div className="p-4 bg-gray-900 vh-100">
+    <div className="p-4 mt-12 bg-gray-900 vh-100">
       <>
         <ProjectFilter />
       </>
