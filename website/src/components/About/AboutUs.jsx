@@ -378,3 +378,5 @@ const AboutUs = () => {
 };
 
 export default AboutUs;
+
+// dummy commit
